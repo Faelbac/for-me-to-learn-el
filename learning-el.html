@@ -12,7 +12,7 @@
     <input id="titleIN" placeholder="type Company's title" disabled="[[disabled]]">
     <input id="desIN" placeholder="type Company's description" disabled="[[disabled]]">
     <button on-click="_updatevalue">Insert Company</button>
-    <create-plant style="display: {{displayChild}}"></create-plant>
+    <create-plant id="cpID" style="display: {{displayChild}}"></create-plant>
 
   </template>
 
@@ -72,7 +72,8 @@
           {
             "parentRef": this.name
           }
-        ]
+        ];
+        this.$.cpID.plantArr = this.plantArr;
       }
     }
 

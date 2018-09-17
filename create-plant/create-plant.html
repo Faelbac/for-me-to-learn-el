@@ -8,17 +8,17 @@
         display: block;
       }
     </style>
+    <input id="titleIN" placeholder="type Plant's title">
+    <input id="desIN" placeholder="type Plant's description">
+    <button on-click="_updatevalue">Insert Plant</button>
     <iron-list items="[[plantArr]]" as="item">
       <template>
         <div class="item">
-          <p>[[item.parentRef]]</p>
-          <input id="titleIN" placeholder="type Plant's title">
-          <input id="desIN" placeholder="type Plant's description">
-          <button on-click="_updatevalue">Insert Plant</button>
+          
         </div>
       </template>
     </iron-list>
-    <h2>Hello [[plantArr]]!</h2>
+    
   </template>
 
   <script>
@@ -46,7 +46,6 @@
         this.name = this.$.titleIN.value;
         this.title = this.$.titleIN.value;
         this.description = this.$.desIN.value;
-        this.showChild = false;
       }
     }
 
