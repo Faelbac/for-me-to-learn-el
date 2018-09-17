@@ -1,0 +1,81 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="create-plant/create-plant.html">
+
+<dom-module id="learning-el">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+
+    <input id="titleIN" placeholder="type Company's title" disabled="[[disabled]]">
+    <input id="desIN" placeholder="type Company's description" disabled="[[disabled]]">
+    <button on-click="_updatevalue">Insert Company</button>
+    <create-plant style="display: {{displayChild}}"></create-plant>
+
+  </template>
+
+  <script>
+    /**
+     * `learning-el`
+     * Just some tests.
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class LearningEl extends Polymer.Element {
+      static get is() { return 'learning-el'; }
+      static get properties() {
+        return {
+          name: {
+            type: String,
+            value: ''
+          },
+          title: {
+            type: String,
+            value: ''
+          },
+          description: {
+            type: String,
+            value: ''
+          },
+          term: {
+            type: String,
+            value: 'empresa'
+          },
+          disabled: {
+            type: Boolean,
+            value: false
+          },
+          displayChild: {
+            type: String,
+            value: 'none'
+          },
+          plantArr: {
+            type: Array,
+            value: []
+          }
+        };
+      }
+      constructor() {
+        super();
+      }
+      _updatevalue() {
+        this.name = this.$.titleIN.value;
+        this.title = this.$.titleIN.value;
+        this.description = this.$.desIN.value;
+        this.disabled = true;
+        this.displayChild = 'initial';
+        this.plantArr = [
+          {
+            "parentRef": this.name
+          }
+        ]
+      }
+    }
+
+    window.customElements.define(LearningEl.is, LearningEl);
+  </script>
+</dom-module>

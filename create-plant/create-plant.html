@@ -1,0 +1,55 @@
+<link rel="import" href="../../polymer/polymer-element.html">
+<link rel="import" href="../../iron-list/iron-list.html">
+
+<dom-module id="create-plant">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <iron-list items="[[plantArr]]" as="item">
+      <template>
+        <div class="item">
+          <p>[[item.parentRef]]</p>
+          <input id="titleIN" placeholder="type Plant's title">
+          <input id="desIN" placeholder="type Plant's description">
+          <button on-click="_updatevalue">Insert Plant</button>
+        </div>
+      </template>
+    </iron-list>
+    <h2>Hello [[plantArr]]!</h2>
+  </template>
+
+  <script>
+    /**
+     * `create-plant`
+     * Tests for creating a plant-element.
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class CreatePlant extends Polymer.Element {
+      static get is() { return 'create-plant'; }
+      static get properties() {
+        return {
+          plantArr: {
+            type: Array,
+          }
+        };
+      }
+      constructor() {
+        super();
+      }
+      _updatevalue() {
+        this.name = this.$.titleIN.value;
+        this.title = this.$.titleIN.value;
+        this.description = this.$.desIN.value;
+        this.showChild = false;
+      }
+    }
+
+    window.customElements.define(CreatePlant.is, CreatePlant);
+  </script>
+</dom-module>
